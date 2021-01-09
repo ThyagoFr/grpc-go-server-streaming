@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package primenumber;
+
+option go_package=".;primenumber";
+
+message PrimeNumberStreaming {
+    int64 number = 1;
+}
+
+message PrimeNumberStreamingRequest {
+    PrimeNumberStreaming request = 1;
+}
+
+message PrimeNumberStreamingResponse {
+    int64 response = 1;
+}
+
+service PrimeNumberStreamingService {
+    rpc PrimeNumberDecomposition (PrimeNumberStreamingRequest) returns (stream PrimeNumberStreamingResponse);
+}
